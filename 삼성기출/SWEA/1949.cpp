@@ -25,7 +25,7 @@ void dfs(int x, int y, int cnt){
         if(rx >= 0  && rx < N && ry >= 0 && ry < N  && visited[rx][ry] == 0){
         	if(d[x][y] > d[rx][ry]){
                visited[rx][ry] = 1 ;
-            	dfs(rx, ry, cnt+1);
+            	dfs(rx, ry, cnt+1); // 백트래킹
                 visited[rx][ry] = 0;
             }
         }
