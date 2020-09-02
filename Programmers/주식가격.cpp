@@ -3,7 +3,7 @@
 #include <stack>
 using namespace std;
 //새로 나온것이 기존것보다 작으면 무언가를 해주어야한다.
-//스택에 쌓다가 작은게 나오면
+//스택에 쌓다가 작은게 나오면 
 // 숫자가 구분이 안되니까 인덱스로 푸쉬해준다.
 vector<int> solution(vector<int> prices) {
     vector<int> answer(prices.size());
