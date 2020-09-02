@@ -26,23 +26,23 @@ void eratos(int num){
 
 bool isinclude(int num, string numbers){
     string k = to_string(num);
-    for(int i = 0 ; i < k.size() ; i++){
+    for(int i = 0 ; i < k.size() ; i++){ // 체크할 애
         bool check = false;
-        for(int j = 0 ; j <= numbers.size(); j++){
+        for(int j = 0 ; j < numbers.size(); j++){ // 기존배열
             if(numbers[j] == k[i]){
                 check = true;
-                numbers[j] = ' ';
+                numbers[j] = ' '; // 다시 쓸수 없게 공백처리
                 break;
             }
         }
-        if(check == false) return false;
+        if(check == false) return false; // 하나라도 아닌게있으면 
     }
     return true;
 }
 
 int solution(string numbers) {
     int answer = 0;
-    sort(numbers.begin(), numbers.end(), greater<int>()); // 내림차순 정렬
+    sort(numbers.begin(), numbers.end(), greater<int>()); // 내림차순 정렬, 0이 있으면 0도 포함됨
     int num = stoi(numbers);
     eratos(num);
     
