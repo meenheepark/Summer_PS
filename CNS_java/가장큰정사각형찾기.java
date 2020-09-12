@@ -1,28 +1,28 @@
 import java.util.*;
 import java.lang.Math;
-import java.util.Arrays;
 
 class Solution
 {
     public int solution(int [][]board)
     {
         int answer = 0;
-        int [][]ans = new int[board.length +1][board[0].length+1]; // 크기주의
-        //Arrays.fill(ans, 10);
-        for(int i = 0 ; i < board.length ; i++){
-            for(int j = 0 ; j < board[0].length; j++){
-                if(board[i][j] == 1) ans[i][j] = 1;
-            }
-        }
 
         for(int i = 1 ; i < board.length ; i++){
-            for(int j = 1 ; j < board[0].length; j++){
-                if(ans[i][j] == 1){
-                    int r = Math.min(ans[i][j-1], ans[i-1][j]);
-                    r = Math.min(r, ans[i-1][j-1]);
+            for(int j = 1 ; j < board[i].length; j++){ // 밑으로 내려가니까 덮어씌워줘도된다.
+                if(board[i][j] == 1){
+                    int r = Math.min(board[i][j-1], board[i-1][j]);
+                    r = Math.min(r, board[i-1][j-1]);
                     
-                    ans[i][j] = r + 1;
-                    answer = Math.max(answer, ans[i][j]);
+                    board[i][j] = r + 1;
+                    //answer = Math.max(answer, board[i][j]);
+                }
+            }
+        }
+        
+        for(int i = 0 ; i < board.length ; i++){
+            for(int j = 0 ; j < board[i].length; j++){
+                if(board[i][j] > 0){ // 1x1인경우가 있을수도 있어서 검사해야됨
+                    answer = Math.max(answer, board[i][j]);
                 }
             }
         }
